@@ -5,31 +5,38 @@
 
     <div class="bundle-cards">
       {%- for block in section.blocks -%}
-        <div class="bundle-card" {{ block.shopify_attributes }}>
-          <div class="bundle-card-header">
-            <span class="bundle-badge">{{ block.settings.badge }}</span>
-            <h3>{{ block.settings.title }}</h3>
-            <p class="bundle-price">{{ block.settings.price_range }}</p>
-          </div>
-          <div class="bundle-card-body">
-            <p>{{ block.settings.description }}</p>
-            <h4>What's included:</h4>
-            <ul class="bundle-includes" role="list">
-              {%- assign items = block.settings.includes | split: '|' -%}
-              {%- for item in items -%}
-                <li>{{ item | strip }}</li>
-              {%- endfor -%}
-            </ul>
-            <p class="bundle-best-for"><strong>Best for:</strong> {{ block.settings.best_for }}</p>
-          </div>
-          <div class="bundle-card-footer">
-            {%- if block.settings.product_handle != blank -%}
-              <a href="/products/{{ block.settings.product_handle }}" class="btn btn-primary">View Bundle</a>
+        <a
+          class="bundle-card"
+          href="{%- if block.settings.product_handle != blank -%}/products/{{ block.settings.product_handle }}{%- else -%}/collections/bundles{%- endif -%}"
+          {{ block.shopify_attributes }}
+        >
+          <div class="bundle-card-image">
+            {%- if block.settings.image -%}
+              <img
+                src="{{ block.settings.image | image_url: width: 600 }}"
+                srcset="{{ block.settings.image | image_url: width: 400 }} 400w, {{ block.settings.image | image_url: width: 600 }} 600w"
+                sizes="(max-width: 600px) 100vw, 350px"
+                alt="{{ block.settings.image_alt | default: block.settings.title }}"
+                width="600"
+                height="600"
+                loading="lazy"
+              >
             {%- else -%}
-              <a href="/collections/bundles" class="btn btn-primary">View Bundle</a>
+              <div class="bundle-card-placeholder" aria-hidden="true">
+                <p>Bundle photo coming soon</p>
+              </div>
+            {%- endif -%}
+            {%- if block.settings.badge != blank -%}
+              <span class="bundle-badge">{{ block.settings.badge }}</span>
             {%- endif -%}
           </div>
-        </div>
+          <div class="bundle-card-info">
+            <h3>{{ block.settings.title }}</h3>
+            <p class="bundle-price">{{ block.settings.price_range }}</p>
+            <p class="bundle-tagline">{{ block.settings.description }}</p>
+            <span class="btn btn-primary bundle-view-btn">View Bundle</span>
+          </div>
+        </a>
       {%- endfor -%}
     </div>
   </div>
@@ -59,6 +66,16 @@
       "name": "Bundle card",
       "settings": [
         {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Bundle photo"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image alt text"
+        },
+        {
           "type": "text",
           "id": "badge",
           "label": "Badge (e.g. 'Most Popular')"
@@ -78,20 +95,8 @@
         {
           "type": "textarea",
           "id": "description",
-          "label": "Short description",
-          "default": "A gentle introduction. A few packs to open, sleeves to protect favorites, and a small binder to start organizing."
-        },
-        {
-          "type": "text",
-          "id": "includes",
-          "label": "What's included (separate with |)",
-          "default": "4–5 modern booster packs|100 penny sleeves|Small binder (holds ~60 cards)|Parent PDF guide"
-        },
-        {
-          "type": "text",
-          "id": "best_for",
-          "label": "Best for",
-          "default": "First-timers, younger kids, budget-conscious parents"
+          "label": "Short tagline (1-2 sentences)",
+          "default": "A gentle introduction for first-timers."
         },
         {
           "type": "text",
@@ -111,9 +116,7 @@
           "settings": {
             "title": "Starter Explorer",
             "price_range": "$49 – $59",
-            "description": "A gentle introduction. A few packs to open, sleeves to protect favorites, and a small binder to start organizing.",
-            "includes": "4–5 modern booster packs|100 penny sleeves|Small binder (holds ~60 cards)|Parent PDF guide",
-            "best_for": "First-timers, younger kids, budget-conscious parents",
+            "description": "A gentle introduction for first-timers.",
             "product_handle": "starter-explorer"
           }
         },
@@ -123,9 +126,7 @@
             "badge": "Most Popular",
             "title": "Growing Collector",
             "price_range": "$79 – $89",
-            "description": "More packs, better supplies, and room to grow. Great for kids who are already into it and want to build a real collection.",
-            "includes": "8–10 modern booster packs|200 penny sleeves|Semi-rigid top loaders (10-pack)|Binder with side-loading pages|Expanded parent PDF guide",
-            "best_for": "Kids with some experience, collectors and organizers",
+            "description": "More packs, better supplies, room to grow.",
             "product_handle": "growing-collector"
           }
         },
@@ -134,9 +135,7 @@
           "settings": {
             "title": "Confident Collector",
             "price_range": "$109 – $129",
-            "description": "The full experience. Plenty of packs, premium protection supplies, a quality binder, and a storage guide for the long haul.",
-            "includes": "12–15 modern booster packs|300 penny sleeves|Semi-rigid top loaders (25-pack)|Premium binder with side-loading pages|Expanded parent PDF guide|Card storage tips sheet",
-            "best_for": "Experienced collectors, careful kids, bigger budgets",
+            "description": "The full experience for serious collectors.",
             "product_handle": "confident-collector"
           }
         }
