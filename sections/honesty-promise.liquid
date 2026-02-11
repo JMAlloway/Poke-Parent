@@ -2,12 +2,20 @@
   <div class="container honesty-inner">
     <h2 id="honesty-heading">{{ section.settings.heading }}</h2>
     <ul class="honesty-list" role="list">
-      {%- for block in section.blocks -%}
-        <li {{ block.shopify_attributes }}>
-          <span class="honesty-icon" aria-hidden="true">{{ block.settings.icon }}</span>
-          <span>{{ block.settings.text }}</span>
-        </li>
-      {%- endfor -%}
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <li {{ block.shopify_attributes }}>
+            <span class="honesty-icon" aria-hidden="true">{{ block.settings.icon }}</span>
+            <span>{{ block.settings.text }}</span>
+          </li>
+        {%- endfor -%}
+      {%- else -%}
+        <li><span class="honesty-icon" aria-hidden="true">✓</span><span>Packs are randomized. We never guarantee rare cards.</span></li>
+        <li><span class="honesty-icon" aria-hidden="true">✓</span><span>Cards are for fun and collecting — not financial products.</span></li>
+        <li><span class="honesty-icon" aria-hidden="true">✓</span><span>Grading is optional and usually unnecessary for kids.</span></li>
+        <li><span class="honesty-icon" aria-hidden="true">✓</span><span>We'll never pressure you to buy more than your child needs.</span></li>
+        <li><span class="honesty-icon" aria-hidden="true">✓</span><span>Parental supervision recommended for younger children (small parts in accessories).</span></li>
+      {%- endif -%}
     </ul>
   </div>
 </section>
