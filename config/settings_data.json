@@ -2,10 +2,10 @@
   "current": {
     "brand_name": "Poké Parent Shop",
     "brand_tagline": "Pokémon cards, explained for parents.",
-    "color_primary": "#3B82A0",
-    "color_secondary": "#F5C542",
+    "color_primary": "#2563EB",
+    "color_secondary": "#FFCB05",
     "color_bg": "#FAFAF7",
-    "color_text": "#2D2D2D",
-    "color_accent": "#6BBF7A"
+    "color_text": "#1a1a2e",
+    "color_accent": "#22C55E"
   }
 }
