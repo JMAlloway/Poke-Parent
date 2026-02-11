@@ -20,10 +20,10 @@
   {%- comment -%} Font loading via Shopify font_picker settings {%- endcomment -%}
   {% assign heading_font = settings.font_heading %}
   {% assign body_font = settings.font_body %}
-  {{ heading_font | font_face: font_display: 'swap' }}
-  {{ body_font | font_face: font_display: 'swap' }}
 
   <style>
+    {{ heading_font | font_face: font_display: 'swap' }}
+    {{ body_font | font_face: font_display: 'swap' }}
     :root {
       --color-primary: {{ settings.color_primary }};
       --color-secondary: {{ settings.color_secondary }};
