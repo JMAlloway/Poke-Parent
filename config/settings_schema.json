@@ -35,14 +35,14 @@
       {
         "type": "color",
         "id": "color_primary",
-        "label": "Primary (bold blue)",
-        "default": "#2563EB"
+        "label": "Primary",
+        "default": "#2D5A8E"
       },
       {
         "type": "color",
         "id": "color_secondary",
-        "label": "Secondary (bright yellow)",
-        "default": "#FFCB05"
+        "label": "Secondary (warm coral)",
+        "default": "#D97040"
       },
       {
         "type": "color",
@@ -54,13 +54,13 @@
         "type": "color",
         "id": "color_text",
         "label": "Text color",
-        "default": "#1a1a2e"
+        "default": "#2D2D2D"
       },
       {
         "type": "color",
         "id": "color_accent",
-        "label": "Accent (bold green)",
-        "default": "#22C55E"
+        "label": "Accent (sage green)",
+        "default": "#5B9E6F"
       }
     ]
   },
