@@ -1,0 +1,218 @@
+<section class="quiz-section" aria-labelledby="quiz-heading">
+  <div class="container quiz-container">
+    <div class="quiz-intro" id="quiz-intro">
+      <h1 id="quiz-heading">Find the Right Bundle</h1>
+      <p class="quiz-subtitle">
+        Answer a few quick questions about your child and we'll match them with the
+        right bundle. Takes under 2 minutes. No account needed.
+      </p>
+      <button class="btn btn-primary quiz-start-btn" type="button" aria-controls="quiz-form">
+        Let's Go
+      </button>
+    </div>
+
+    <form id="quiz-form" class="quiz-form" aria-label="Bundle recommendation quiz" hidden>
+      <div class="quiz-progress" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="6">
+        <div class="quiz-progress-bar" style="width: 16.6%"></div>
+        <span class="quiz-progress-text">Question 1 of 6</span>
+      </div>
+
+      <!-- Q1: Age -->
+      <fieldset class="quiz-step" data-step="1">
+        <legend>How old is the child?</legend>
+        <div class="quiz-options">
+          <label class="quiz-option">
+            <input type="radio" name="age" value="under6" required>
+            <span class="quiz-option-label">Under 6</span>
+            <span class="quiz-option-hint">Preschool / Kindergarten</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="age" value="6to8">
+            <span class="quiz-option-label">6 – 8</span>
+            <span class="quiz-option-hint">Early elementary</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="age" value="9to11">
+            <span class="quiz-option-label">9 – 11</span>
+            <span class="quiz-option-hint">Upper elementary</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="age" value="12plus">
+            <span class="quiz-option-label">12+</span>
+            <span class="quiz-option-hint">Middle school and up</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Q2: Enjoyment -->
+      <fieldset class="quiz-step" data-step="2" hidden>
+        <legend>How does your child enjoy Pokémon?</legend>
+        <div class="quiz-options">
+          <label class="quiz-option">
+            <input type="radio" name="enjoyment" value="playing" required>
+            <span class="quiz-option-label">Playing the card game</span>
+            <span class="quiz-option-hint">They like battling or want to learn the rules</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="enjoyment" value="collecting">
+            <span class="quiz-option-label">Collecting &amp; organizing</span>
+            <span class="quiz-option-hint">They love sorting cards, filling binders, finding favorites</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="enjoyment" value="characters">
+            <span class="quiz-option-label">They just love the characters</span>
+            <span class="quiz-option-hint">They watch the show or play the video games</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="enjoyment" value="notsure">
+            <span class="quiz-option-label">Not sure yet</span>
+            <span class="quiz-option-hint">They're interested but haven't started</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Q3: Carefulness -->
+      <fieldset class="quiz-step" data-step="3" hidden>
+        <legend>How careful is your child with their things?</legend>
+        <div class="quiz-options">
+          <label class="quiz-option">
+            <input type="radio" name="carefulness" value="rough" required>
+            <span class="quiz-option-label">Rough</span>
+            <span class="quiz-option-hint">Things get bent, lost, or dropped regularly</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="carefulness" value="mixed">
+            <span class="quiz-option-label">Mixed</span>
+            <span class="quiz-option-hint">Careful sometimes, not always</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="carefulness" value="careful">
+            <span class="quiz-option-label">Very careful</span>
+            <span class="quiz-option-hint">They take good care of their belongings</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Q4: Experience -->
+      <fieldset class="quiz-step" data-step="4" hidden>
+        <legend>What's their experience with Pokémon cards?</legend>
+        <div class="quiz-options">
+          <label class="quiz-option">
+            <input type="radio" name="experience" value="first" required>
+            <span class="quiz-option-label">These would be their first cards</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="experience" value="some">
+            <span class="quiz-option-label">They have some already</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="experience" value="collecting">
+            <span class="quiz-option-label">They've been collecting a while</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Q5: Budget -->
+      <fieldset class="quiz-step" data-step="5" hidden>
+        <legend>What's your budget comfort zone?</legend>
+        <p class="quiz-hint">No wrong answer here. All three bundles are good value.</p>
+        <div class="quiz-options">
+          <label class="quiz-option">
+            <input type="radio" name="budget" value="low" required>
+            <span class="quiz-option-label">$40 – $60</span>
+            <span class="quiz-option-hint">A solid starting point</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="budget" value="mid">
+            <span class="quiz-option-label">$60 – $90</span>
+            <span class="quiz-option-hint">More packs and better supplies</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="budget" value="high">
+            <span class="quiz-option-label">$90 – $130+</span>
+            <span class="quiz-option-hint">The full experience</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Q6: Favorite Pokémon (optional) -->
+      <fieldset class="quiz-step" data-step="6" hidden>
+        <legend>Does your child have a favorite Pokémon? <span class="quiz-optional">(optional)</span></legend>
+        <p class="quiz-hint">If they do, type it here. We'll include a note about which sets might feature that Pokémon. If you're not sure, just skip this.</p>
+        <div class="quiz-text-input">
+          <input
+            type="text"
+            name="favorite"
+            id="quiz-favorite"
+            placeholder="e.g. Pikachu, Charizard, Eevee…"
+            autocomplete="off"
+            maxlength="100"
+          >
+        </div>
+      </fieldset>
+
+      <div class="quiz-nav">
+        <button type="button" class="btn btn-secondary quiz-back" hidden>Back</button>
+        <button type="button" class="btn btn-primary quiz-next">Next</button>
+      </div>
+    </form>
+
+    <!-- Result -->
+    <div id="quiz-result" class="quiz-result" hidden>
+      <h2>Here's what we'd recommend</h2>
+      <div id="quiz-result-card" class="quiz-result-card">
+        <!-- Populated by JS -->
+      </div>
+      <div id="quiz-extras" class="quiz-extras">
+        <!-- Add-on suggestions populated by JS -->
+      </div>
+      <div class="quiz-result-actions">
+        <button type="button" id="quiz-add-to-cart" class="btn btn-primary">Add to Cart</button>
+        <button type="button" class="btn btn-secondary quiz-retake">Retake Quiz</button>
+      </div>
+      <p class="quiz-result-note">
+        Not what you expected? No worries — <a href="/collections/bundles">browse all bundles</a>
+        or <a href="/pages/parent-guide-hub">read our guides</a> to decide on your own.
+      </p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Quiz",
+  "class": "section-quiz",
+  "settings": [
+    {
+      "type": "text",
+      "id": "bundle_a_handle",
+      "label": "Starter Explorer product handle",
+      "default": "starter-explorer"
+    },
+    {
+      "type": "text",
+      "id": "bundle_b_handle",
+      "label": "Growing Collector product handle",
+      "default": "growing-collector"
+    },
+    {
+      "type": "text",
+      "id": "bundle_c_handle",
+      "label": "Confident Collector product handle",
+      "default": "confident-collector"
+    },
+    {
+      "type": "text",
+      "id": "addon_deck_handle",
+      "label": "Starter deck add-on handle (optional)",
+      "default": "starter-deck-addon"
+    },
+    {
+      "type": "text",
+      "id": "addon_sleeves_handle",
+      "label": "Extra sleeves add-on handle (optional)",
+      "default": "extra-sleeves"
+    }
+  ]
+}
+{% endschema %}

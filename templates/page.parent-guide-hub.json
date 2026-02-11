@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "parent-guide-hub",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

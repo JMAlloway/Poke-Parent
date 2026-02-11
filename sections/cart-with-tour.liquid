@@ -1,0 +1,127 @@
+<section class="cart-section" aria-labelledby="cart-heading">
+  <div class="container">
+    <h1 id="cart-heading">Your Cart</h1>
+
+    {%- if cart.item_count == 0 -%}
+      <div class="cart-empty">
+        <p>Your cart is empty.</p>
+        <a href="/pages/quiz" class="btn btn-primary">Take the Quiz</a>
+        <a href="/collections/bundles" class="btn btn-secondary">Browse Bundles</a>
+      </div>
+    {%- else -%}
+
+      {%- comment -%} Guided Tour Trigger {%- endcomment -%}
+      <div class="cart-tour-banner">
+        <p><strong>First time here?</strong> We have a quick walkthrough that explains what to expect.</p>
+        <button type="button" class="btn btn-secondary btn-sm" id="start-cart-tour">
+          Show Me the Walkthrough
+        </button>
+      </div>
+
+      <form action="/cart" method="post" class="cart-form">
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Price</th>
+              <th scope="col">Qty</th>
+              <th scope="col">Total</th>
+              <th scope="col"><span class="visually-hidden">Remove</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            {%- for item in cart.items -%}
+              <tr>
+                <td class="cart-product" data-tour-target="cart-item">
+                  <div class="cart-product-inner">
+                    {%- if item.image -%}
+                      <img src="{{ item.image | image_url: width: 100 }}" alt="{{ item.title }}" width="100" height="auto" loading="lazy">
+                    {%- endif -%}
+                    <div>
+                      <a href="{{ item.url }}">{{ item.title }}</a>
+                      {%- if item.product.metafields.custom.bundle_summary -%}
+                        <p class="cart-item-note">{{ item.product.metafields.custom.bundle_summary }}</p>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </td>
+                <td>{{ item.price | money }}</td>
+                <td>
+                  <input
+                    type="number"
+                    name="updates[]"
+                    value="{{ item.quantity }}"
+                    min="0"
+                    max="10"
+                    aria-label="Quantity for {{ item.title }}"
+                  >
+                </td>
+                <td>{{ item.line_price | money }}</td>
+                <td>
+                  <a href="/cart/change?id={{ item.key }}&quantity=0" aria-label="Remove {{ item.title }}">
+                    &times;
+                  </a>
+                </td>
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+
+        <div class="cart-footer" data-tour-target="cart-total">
+          <div class="cart-totals">
+            <p class="cart-subtotal"><strong>Subtotal:</strong> {{ cart.total_price | money }}</p>
+            <p class="cart-tax-note">Taxes and shipping calculated at checkout.</p>
+          </div>
+
+          <div class="cart-actions">
+            <button type="submit" name="update" class="btn btn-secondary">Update Cart</button>
+            <button type="submit" name="checkout" class="btn btn-primary" data-tour-target="cart-checkout" id="cart-checkout-btn">
+              Proceed to Checkout
+            </button>
+          </div>
+        </div>
+      </form>
+
+      {%- comment -%} Pre-checkout interstitial (Non-Plus path) {%- endcomment -%}
+      <div id="pre-checkout-modal" class="modal" hidden aria-modal="true" role="dialog" aria-labelledby="modal-title">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+          <button type="button" class="modal-close" aria-label="Close">&times;</button>
+          <h2 id="modal-title">Before You Check Out</h2>
+          <p>Here are a few things to know — no surprises.</p>
+
+          <div class="modal-steps">
+            <div class="modal-step">
+              <h3>📦 Shipping</h3>
+              <p>We ship within 1–3 business days. Most orders arrive in 5–7 business days. You'll get a tracking number by email.</p>
+            </div>
+            <div class="modal-step">
+              <h3>🎲 About the Packs</h3>
+              <p>Pokémon packs are randomized — think of them like surprise bags. Most packs won't contain rare cards, and that's completely normal. The fun is in the surprise.</p>
+            </div>
+            <div class="modal-step">
+              <h3>↩️ Returns</h3>
+              <p>Sealed products can be returned within 30 days. Once packs are opened, we can't accept returns because the contents are random. Supplies (binders, sleeves) can be returned unused.</p>
+            </div>
+            <div class="modal-step">
+              <h3>💳 Payment & Taxes</h3>
+              <p>We accept all major cards and PayPal. Tax is calculated at checkout based on your location. No hidden fees.</p>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn btn-primary" id="modal-proceed">Got It — Proceed to Checkout</button>
+          </div>
+        </div>
+      </div>
+
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart with Tour",
+  "class": "section-cart"
+}
+{% endschema %}

@@ -1,0 +1,156 @@
+<section class="product-bundle" aria-labelledby="product-title">
+  <div class="container product-inner">
+
+    <div class="product-gallery">
+      {%- if product.featured_image -%}
+        <img
+          src="{{ product.featured_image | image_url: width: 600 }}"
+          alt="{{ product.featured_image.alt | default: product.title }}"
+          width="600"
+          height="auto"
+          loading="eager"
+        >
+      {%- else -%}
+        <div class="product-placeholder">
+          <p>Upload a product photo in Shopify Admin &rarr; Products.</p>
+        </div>
+      {%- endif -%}
+
+      {%- if product.images.size > 1 -%}
+        <div class="product-thumbnails">
+          {%- for image in product.images -%}
+            <img
+              src="{{ image | image_url: width: 120 }}"
+              alt="{{ image.alt | default: product.title }}"
+              width="120"
+              height="auto"
+              loading="lazy"
+            >
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="product-details">
+      <h1 id="product-title">{{ product.title }}</h1>
+      <p class="product-price">{{ product.price | money }}</p>
+
+      {%- if product.metafields.custom.bundle_summary -%}
+        <p class="product-summary">{{ product.metafields.custom.bundle_summary }}</p>
+      {%- endif -%}
+
+      <div class="product-description rte">
+        {{ product.description }}
+      </div>
+
+      {%- comment -%} What's Included (from metafield or hardcoded in description) {%- endcomment -%}
+      {%- if product.metafields.custom.whats_included -%}
+        <div class="product-includes">
+          <h2>What's Included</h2>
+          <ul role="list">
+            {%- assign items = product.metafields.custom.whats_included.value -%}
+            {%- for item in items -%}
+              <li>{{ item }}</li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Age-appropriate notes {%- endcomment -%}
+      {%- if product.metafields.custom.age_note -%}
+        <div class="product-age-note">
+          <strong>Age note:</strong> {{ product.metafields.custom.age_note }}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Care tips {%- endcomment -%}
+      {%- if product.metafields.custom.care_tips -%}
+        <div class="product-care-tips">
+          <h3>Card Care Tips</h3>
+          <p>{{ product.metafields.custom.care_tips }}</p>
+        </div>
+      {%- endif -%}
+
+      <form method="post" action="/cart/add" class="product-form">
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+        {%- if product.available -%}
+          <button type="submit" class="btn btn-primary product-add-btn">
+            Add to Cart — {{ product.price | money }}
+          </button>
+        {%- else -%}
+          <button type="button" class="btn btn-disabled" disabled>Sold Out</button>
+        {%- endif -%}
+      </form>
+
+      <div class="product-reassurance">
+        <ul role="list">
+          <li>Packs are randomized — no guarantees of specific cards</li>
+          <li>All products are official and sealed</li>
+          <li>Includes our parent PDF guide</li>
+          <li>Ships within 1–3 business days</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} Related add-ons {%- endcomment -%}
+  {%- if section.settings.show_addons and section.blocks.size > 0 -%}
+    <div class="container product-addons">
+      <h2>Optional Add-Ons</h2>
+      <div class="addon-grid">
+        {%- for block in section.blocks -%}
+          {%- assign addon = all_products[block.settings.product_handle] -%}
+          {%- if addon -%}
+            <div class="addon-card" {{ block.shopify_attributes }}>
+              {%- if addon.featured_image -%}
+                <img src="{{ addon.featured_image | image_url: width: 200 }}" alt="{{ addon.title }}" width="200" height="auto" loading="lazy">
+              {%- endif -%}
+              <h3>{{ addon.title }}</h3>
+              <p>{{ addon.price | money }}</p>
+              <p class="addon-desc">{{ block.settings.reason }}</p>
+              <form method="post" action="/cart/add">
+                <input type="hidden" name="id" value="{{ addon.selected_or_first_available_variant.id }}">
+                <button type="submit" class="btn btn-secondary btn-sm">Add</button>
+              </form>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Product Bundle",
+  "class": "section-product-bundle",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_addons",
+      "label": "Show add-on suggestions",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "addon",
+      "name": "Add-on product",
+      "settings": [
+        {
+          "type": "text",
+          "id": "product_handle",
+          "label": "Product handle (URL slug)"
+        },
+        {
+          "type": "text",
+          "id": "reason",
+          "label": "Why this add-on?",
+          "default": "A helpful addition to your bundle."
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

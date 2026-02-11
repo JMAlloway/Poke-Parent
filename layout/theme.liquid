@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_primary }}">
+
+  <title>
+    {%- if page_title -%}{{ page_title }} — {{ settings.brand_name }}{%- else -%}{{ settings.brand_name }} — {{ settings.brand_tagline }}{%- endif -%}
+  </title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+  {{ content_for_header }}
+
+  {%- comment -%} Font loading via Shopify font_picker settings {%- endcomment -%}
+  {% assign heading_font = settings.font_heading %}
+  {% assign body_font = settings.font_body %}
+  {{ heading_font | font_face: font_display: 'swap' }}
+  {{ body_font | font_face: font_display: 'swap' }}
+
+  <style>
+    :root {
+      --color-primary: {{ settings.color_primary }};
+      --color-secondary: {{ settings.color_secondary }};
+      --color-bg: {{ settings.color_bg }};
+      --color-text: {{ settings.color_text }};
+      --color-accent: {{ settings.color_accent }};
+      --font-heading: {{ heading_font.family }}, {{ heading_font.fallback_families }};
+      --font-body: {{ body_font.family }}, {{ body_font.fallback_families }};
+    }
+  </style>
+</head>
+
+<body class="template-{{ template.name }}">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  {% section 'header' %}
+
+  <main id="main-content" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'honesty-promise' %}
+  {% section 'footer' %}
+
+  {{ 'quiz.js' | asset_url | script_tag }}
+  {{ 'guided-tour.js' | asset_url | script_tag }}
+</body>
+</html>

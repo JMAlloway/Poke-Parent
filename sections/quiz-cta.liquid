@@ -1,0 +1,48 @@
+<section class="quiz-cta" aria-labelledby="quiz-cta-heading">
+  <div class="container quiz-cta-inner">
+    <h2 id="quiz-cta-heading">{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.body }}</p>
+    <div class="quiz-cta-steps">
+      <div class="quiz-step">
+        <span class="quiz-step-number" aria-hidden="true">1</span>
+        <p>Answer 5 quick questions</p>
+      </div>
+      <div class="quiz-step">
+        <span class="quiz-step-number" aria-hidden="true">2</span>
+        <p>We match you to a bundle</p>
+      </div>
+      <div class="quiz-step">
+        <span class="quiz-step-number" aria-hidden="true">3</span>
+        <p>Add to cart and you're done</p>
+      </div>
+    </div>
+    <a href="/pages/quiz" class="btn btn-primary">{{ section.settings.cta_text }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Quiz CTA",
+  "class": "section-quiz-cta",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Not sure what to buy? We'll help."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body text",
+      "default": "Our short quiz matches your child's age, interests, and your budget to one of three curated bundles. No guesswork. No pressure."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Start the Quiz"
+    }
+  ]
+}
+{% endschema %}

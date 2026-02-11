@@ -1,0 +1,41 @@
+{%- comment -%}
+  Set Spotlight Component
+
+  Usage in a page template or section:
+    {% render 'set-spotlight',
+      title: 'Scarlet & Violet — Phantasmal Flames',
+      summary: 'A recent set with colorful ghost and fire-themed Pokémon illustrations.',
+      good_for: 'Collectors who love unique art, kids who like fire and ghost types',
+      image: block.settings.set_image,
+      image_alt: 'Example cards from the set',
+      image_attribution: 'Photo credit: ...'
+    %}
+{%- endcomment -%}
+
+<div class="set-spotlight-card">
+  <div class="set-spotlight-image">
+    {%- if image -%}
+      <img
+        src="{{ image | image_url: width: 400 }}"
+        alt="{{ image_alt | default: title }}"
+        width="400"
+        height="auto"
+        loading="lazy"
+      >
+      {%- if image_attribution and image_attribution != blank -%}
+        <p class="image-attribution">{{ image_attribution }}</p>
+      {%- endif -%}
+    {%- else -%}
+      <div class="set-spotlight-placeholder">
+        <p>Upload an approved image of this set in the theme editor.</p>
+      </div>
+    {%- endif -%}
+  </div>
+  <div class="set-spotlight-info">
+    <h3>{{ title }}</h3>
+    <p>{{ summary }}</p>
+    {%- if good_for and good_for != blank -%}
+      <p class="set-good-for"><strong>Good for:</strong> {{ good_for }}</p>
+    {%- endif -%}
+  </div>
+</div>

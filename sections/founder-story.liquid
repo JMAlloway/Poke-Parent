@@ -1,0 +1,64 @@
+<section class="founder-story" aria-labelledby="founder-heading">
+  <div class="container founder-inner">
+    <div class="founder-image">
+      {%- if section.settings.image -%}
+        <img
+          src="{{ section.settings.image | image_url: width: 400 }}"
+          alt="{{ section.settings.image_alt | default: 'The founder' }}"
+          width="400"
+          height="auto"
+          loading="lazy"
+        >
+      {%- else -%}
+        <div class="founder-placeholder" aria-hidden="true">
+          <p>Upload a photo in the theme editor.</p>
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="founder-text">
+      <h2 id="founder-heading">{{ section.settings.heading }}</h2>
+      <div class="founder-body">
+        {{ section.settings.body }}
+      </div>
+      <p class="founder-signature">— {{ section.settings.name }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Founder Story",
+  "class": "section-founder-story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "I'm a dad who didn't grow up with this."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Story",
+      "default": "<p>When my kid came home from school talking about Pokémon cards, I had no idea where to start. I walked into a store, stared at a wall of products, and walked out confused and empty-handed.</p><p>So I started learning. I figured out what the different packs are, what supplies actually matter, and how to avoid wasting money on things my kid didn't need.</p><p>This shop is what I wish existed when I started: a calm, honest place where another parent just explains things plainly. No hype. No jargon. No pressure to spend more than you want to.</p><p>Everything here is something I'd buy for my own kid.</p>"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Your name",
+      "default": "The Poké Parent Shop Founder"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Photo alt text",
+      "default": "The founder of Poké Parent Shop"
+    }
+  ]
+}
+{% endschema %}

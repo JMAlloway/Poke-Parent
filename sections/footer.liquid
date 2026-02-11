@@ -1,0 +1,57 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container footer-inner">
+    <div class="footer-grid">
+
+      <div class="footer-col">
+        <h4>{{ settings.brand_name }}</h4>
+        <p class="footer-tagline">{{ settings.brand_tagline }}</p>
+        <p class="footer-small">A small shop run by a parent, for parents.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul role="list">
+          <li><a href="/pages/quiz">Find Your Bundle</a></li>
+          <li><a href="/collections/bundles">All Bundles</a></li>
+          <li><a href="/collections/add-ons">Add-Ons</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <ul role="list">
+          <li><a href="/pages/parent-guide-hub">Parent Guide Hub</a></li>
+          <li><a href="/pages/pokemon-101">Pokémon 101</a></li>
+          <li><a href="/pages/what-to-expect-from-packs">What to Expect from Packs</a></li>
+          <li><a href="/pages/card-protection-basics">Card Protection Basics</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Policies</h4>
+        <ul role="list">
+          <li><a href="/policies/shipping-policy">Shipping</a></li>
+          <li><a href="/policies/refund-policy">Returns</a></li>
+          <li><a href="/policies/privacy-policy">Privacy</a></li>
+          <li><a href="/pages/affiliate-disclosure">Affiliate Disclosure</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ settings.brand_name }}. All rights reserved.</p>
+      <p class="footer-disclaimer">
+        Pokémon and all related names are trademarks of Nintendo / Creatures Inc. / GAME FREAK Inc.
+        This store is not affiliated with or endorsed by The Pokémon Company.
+        Cards are collectibles for fun — not financial instruments.
+      </p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "class": "section-footer"
+}
+{% endschema %}

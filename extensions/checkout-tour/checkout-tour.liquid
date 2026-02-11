@@ -1,0 +1,60 @@
+{%- comment -%}
+  SHOPIFY PLUS ONLY — Checkout UI Extension (Checkout Extensibility)
+
+  This block renders a guided information panel in the Shopify checkout
+  for Plus merchants. It reassures parents about shipping, pack randomness,
+  returns, and payment.
+
+  Placement: Add this as a checkout block in Shopify Admin → Settings → Checkout → Customize.
+  Target: checkout.order-summary.block.render-after
+{%- endcomment -%}
+
+<div class="checkout-parent-guide" style="
+  background: #f0f7fa;
+  border: 1px solid #d0e4ed;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.9rem;
+  color: #2D2D2D;
+  line-height: 1.6;
+">
+  <p style="font-weight: 700; margin-bottom: 0.5rem; color: #3B82A0;">
+    A Quick Note for Parents
+  </p>
+
+  <details style="margin-bottom: 0.5rem;">
+    <summary style="cursor: pointer; font-weight: 600;">About the packs in your order</summary>
+    <p style="padding: 0.5rem 0 0 0.5rem;">
+      Pokémon packs are randomized — think of them like surprise bags.
+      Most packs won't contain rare cards, and that's completely normal.
+      The fun is in the surprise of opening them together.
+    </p>
+  </details>
+
+  <details style="margin-bottom: 0.5rem;">
+    <summary style="cursor: pointer; font-weight: 600;">Shipping</summary>
+    <p style="padding: 0.5rem 0 0 0.5rem;">
+      We ship within 1–3 business days. Most orders arrive in 5–7 business days.
+      You'll receive a tracking number by email once shipped.
+    </p>
+  </details>
+
+  <details style="margin-bottom: 0.5rem;">
+    <summary style="cursor: pointer; font-weight: 600;">Returns</summary>
+    <p style="padding: 0.5rem 0 0 0.5rem;">
+      Sealed products can be returned within 30 days. Once packs are opened,
+      we can't accept returns because the contents are random.
+      Supplies (binders, sleeves) can be returned unused.
+    </p>
+  </details>
+
+  <details>
+    <summary style="cursor: pointer; font-weight: 600;">Payment & taxes</summary>
+    <p style="padding: 0.5rem 0 0 0.5rem;">
+      Tax is based on your shipping address. No hidden fees.
+      Your payment info is processed securely by Shopify — we never see your card number.
+    </p>
+  </details>
+</div>

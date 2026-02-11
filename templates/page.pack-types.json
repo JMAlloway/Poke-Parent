@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "pack-types",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

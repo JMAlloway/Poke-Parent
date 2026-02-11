@@ -1,0 +1,75 @@
+<section class="honesty-promise" aria-labelledby="honesty-heading">
+  <div class="container honesty-inner">
+    <h2 id="honesty-heading">{{ section.settings.heading }}</h2>
+    <ul class="honesty-list" role="list">
+      {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}>
+          <span class="honesty-icon" aria-hidden="true">{{ block.settings.icon }}</span>
+          <span>{{ block.settings.text }}</span>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Honesty Promise",
+  "class": "section-honesty-promise",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Honesty Promise"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "promise",
+      "name": "Promise item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon",
+          "default": "✓"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Promise text",
+          "default": "Packs are randomized. We never guarantee rare cards."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Honesty Promise",
+      "blocks": [
+        {
+          "type": "promise",
+          "settings": { "icon": "✓", "text": "Packs are randomized. We never guarantee rare cards." }
+        },
+        {
+          "type": "promise",
+          "settings": { "icon": "✓", "text": "Cards are for fun and collecting — not financial products." }
+        },
+        {
+          "type": "promise",
+          "settings": { "icon": "✓", "text": "Grading is optional and usually unnecessary for kids." }
+        },
+        {
+          "type": "promise",
+          "settings": { "icon": "✓", "text": "We'll never pressure you to buy more than your child needs." }
+        },
+        {
+          "type": "promise",
+          "settings": { "icon": "✓", "text": "Parental supervision recommended for younger children (small parts in accessories)." }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

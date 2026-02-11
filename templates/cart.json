@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "cart-with-tour",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

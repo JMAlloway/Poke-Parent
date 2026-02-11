@@ -1,0 +1,161 @@
+<section class="pack-types" aria-labelledby="packs-heading">
+  <div class="container">
+    <h1 id="packs-heading">What Are Booster Packs?</h1>
+
+    <div class="tldr-box">
+      <h2>TL;DR</h2>
+      <ul>
+        <li><strong>Single booster pack</strong> — 10 cards, cheapest way to open something. ~$4–5 each.</li>
+        <li><strong>Booster bundle</strong> — 6 packs in a box. Convenient, no extras. ~$25–30.</li>
+        <li><strong>Elite Trainer Box (ETB)</strong> — 9 packs + sleeves + dice + a storage box. Great starter. ~$40–50.</li>
+        <li><strong>Booster box</strong> — 36 packs. For serious collectors. ~$130–150.</li>
+        <li><strong>Starter deck</strong> — A ready-to-play 60-card deck. For kids who want to learn the game. ~$12–15.</li>
+      </ul>
+    </div>
+
+    {%- for block in section.blocks -%}
+      <div class="pack-type-card" id="{{ block.settings.anchor }}" {{ block.shopify_attributes }}>
+        <div class="pack-type-image">
+          {%- if block.settings.image -%}
+            <img
+              src="{{ block.settings.image | image_url: width: 400 }}"
+              alt="{{ block.settings.title }}"
+              width="400"
+              height="auto"
+              loading="lazy"
+            >
+          {%- else -%}
+            <div class="pack-type-placeholder">
+              <p>Upload a photo of this product type in the theme editor.</p>
+            </div>
+          {%- endif -%}
+          {%- if block.settings.image_attribution -%}
+            <p class="image-attribution">{{ block.settings.image_attribution }}</p>
+          {%- endif -%}
+        </div>
+        <div class="pack-type-info">
+          <h2>{{ block.settings.title }}</h2>
+          <p class="pack-type-price">{{ block.settings.price_range }}</p>
+          <div class="rte">{{ block.settings.description }}</div>
+          <div class="pack-type-when">
+            <strong>When to buy this:</strong>
+            <p>{{ block.settings.when_to_buy }}</p>
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pack Types Guide",
+  "class": "section-pack-types",
+  "blocks": [
+    {
+      "type": "pack_type",
+      "name": "Pack Type",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Product type name",
+          "default": "Single Booster Pack"
+        },
+        {
+          "type": "text",
+          "id": "anchor",
+          "label": "Anchor ID (for linking)",
+          "default": "single-pack"
+        },
+        {
+          "type": "text",
+          "id": "price_range",
+          "label": "Typical price range",
+          "default": "~$4–5 each"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>A single booster pack contains 10 cards from the current set. One of those cards is guaranteed to be a 'rare' or better, but 'rare' in Pokémon doesn't always mean valuable — it just means it's less common in the set.</p><p>This is the simplest, cheapest way for a kid to open something and see what they get. Think of it like a surprise bag.</p>"
+        },
+        {
+          "type": "text",
+          "id": "when_to_buy",
+          "label": "When to buy this",
+          "default": "When you want a small, inexpensive surprise. Great for rewards, stocking stuffers, or just letting a kid open something fun."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Product photo"
+        },
+        {
+          "type": "text",
+          "id": "image_attribution",
+          "label": "Image attribution (if needed)",
+          "default": ""
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pack Types Guide",
+      "blocks": [
+        {
+          "type": "pack_type",
+          "settings": {
+            "title": "Single Booster Pack",
+            "anchor": "single-pack",
+            "price_range": "~$4–5 each",
+            "description": "<p>A single booster pack contains 10 cards from the current set. One of those cards is guaranteed to be a 'rare' or better, but 'rare' in Pokémon doesn't always mean valuable — it just means it's less common in the set.</p><p>This is the simplest, cheapest way for a kid to open something and see what they get. Think of it like a surprise bag.</p>",
+            "when_to_buy": "When you want a small, inexpensive surprise. Great for rewards, stocking stuffers, or just letting a kid open something fun."
+          }
+        },
+        {
+          "type": "pack_type",
+          "settings": {
+            "title": "Booster Bundle",
+            "anchor": "booster-bundle",
+            "price_range": "~$25–30",
+            "description": "<p>A booster bundle is a box containing 6 booster packs. No extra supplies — just packs. It's a convenient way to buy several packs at once without paying single-pack markup.</p>",
+            "when_to_buy": "When your child wants to open several packs in one sitting. Good for a birthday gift or a weekend activity."
+          }
+        },
+        {
+          "type": "pack_type",
+          "settings": {
+            "title": "Elite Trainer Box (ETB)",
+            "anchor": "etb",
+            "price_range": "~$40–50",
+            "description": "<p>An Elite Trainer Box (commonly called an ETB) includes 9 booster packs, 65 card sleeves, energy cards, dice, condition markers, and a sturdy box that doubles as storage. It's designed as an all-in-one starter product.</p><p>This is often the best first purchase for a new collector because it comes with everything they need to start.</p>",
+            "when_to_buy": "When your child is just starting out and you want one box that covers packs + basic supplies. A popular gift choice."
+          }
+        },
+        {
+          "type": "pack_type",
+          "settings": {
+            "title": "Booster Box",
+            "anchor": "booster-box",
+            "price_range": "~$130–150",
+            "description": "<p>A booster box contains 36 booster packs from a single set. It's the most cost-effective way to open a large number of packs. Often bought by experienced collectors who want broad coverage of a set.</p><p>Important: Even with 36 packs, there's no guarantee of pulling any specific card. The fun is in the variety, not in chasing one card.</p>",
+            "when_to_buy": "For experienced collectors who want lots of packs. Not recommended as a first purchase — start smaller to see if they enjoy it before going bigger."
+          }
+        },
+        {
+          "type": "pack_type",
+          "settings": {
+            "title": "Build & Battle / Starter Deck",
+            "anchor": "starter-deck",
+            "price_range": "~$12–15",
+            "description": "<p>A starter deck (or Build & Battle kit) is a pre-made 60-card deck that's ready to play right out of the box. It comes with instructions for learning the Pokémon Trading Card Game.</p><p>If your child wants to actually play the game (not just collect), this is where to start. It teaches the rules step by step.</p>",
+            "when_to_buy": "When your child wants to learn how to play the card game, not just collect. Also a great affordable gift."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

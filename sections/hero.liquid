@@ -1,0 +1,71 @@
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <h1 id="hero-heading">{{ section.settings.heading }}</h1>
+      <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
+      <div class="hero-ctas">
+        <a href="/pages/quiz" class="btn btn-primary">{{ section.settings.cta_quiz }}</a>
+        <a href="/pages/parent-guide-hub" class="btn btn-secondary">{{ section.settings.cta_learn }}</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      {%- if section.settings.image -%}
+        <img
+          src="{{ section.settings.image | image_url: width: 600 }}"
+          alt="{{ section.settings.image_alt | default: 'A parent and child looking at Pokémon cards together' }}"
+          width="600"
+          height="auto"
+          loading="eager"
+        >
+      {%- else -%}
+        <div class="hero-placeholder" aria-hidden="true">
+          <p>Upload a warm, family-friendly hero image in the theme editor.</p>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "class": "section-hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Pokémon cards, explained for parents."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Your kid loves Pokémon. You have no idea where to start. We get it — we're parents too. We'll help you pick the right cards, protect them, and skip the overwhelm."
+    },
+    {
+      "type": "text",
+      "id": "cta_quiz",
+      "label": "Quiz button text",
+      "default": "Take the 2-Minute Quiz"
+    },
+    {
+      "type": "text",
+      "id": "cta_learn",
+      "label": "Learn button text",
+      "default": "Read Our Parent Guides"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "A parent and child looking at Pokémon cards together"
+    }
+  ]
+}
+{% endschema %}

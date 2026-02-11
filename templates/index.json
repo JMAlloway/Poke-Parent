@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "hero": { "type": "hero", "settings": {} },
+    "quiz-cta": { "type": "quiz-cta", "settings": {} },
+    "bundle-grid": { "type": "bundle-grid", "settings": {} },
+    "founder-story": { "type": "founder-story", "settings": {} },
+    "education-hub-teaser": { "type": "education-hub-teaser", "settings": {} }
+  },
+  "order": ["hero", "quiz-cta", "bundle-grid", "founder-story", "education-hub-teaser"]
+}

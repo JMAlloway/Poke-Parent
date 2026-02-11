@@ -1,0 +1,45 @@
+{
+  "general": {
+    "brand_name": "Poké Parent Shop",
+    "skip_to_content": "Skip to content",
+    "cart": "Cart",
+    "search": "Search",
+    "close": "Close"
+  },
+  "quiz": {
+    "title": "Find the Right Bundle",
+    "subtitle": "Answer a few quick questions and we'll match your child with the perfect starter kit. Takes under 2 minutes.",
+    "q1": "How old is the child?",
+    "q2": "How do they enjoy Pokémon?",
+    "q3": "How careful are they with their things?",
+    "q4": "What's their experience with Pokémon cards?",
+    "q5": "What's your budget comfort zone?",
+    "q6": "Do they have a favorite Pokémon? (optional)",
+    "cta_start": "Find Our Recommendation",
+    "cta_result": "View Your Bundle",
+    "result_heading": "Here's what we recommend"
+  },
+  "bundles": {
+    "starter_explorer": "Starter Explorer",
+    "growing_collector": "Growing Collector",
+    "confident_collector": "Confident Collector"
+  },
+  "guided_tour": {
+    "step1_title": "Your Cart",
+    "step1_body": "Here's what's in your bundle. Each item is listed with a short explanation of what it is and why it's included.",
+    "step2_title": "Shipping",
+    "step2_body": "We ship within 1–3 business days. Most orders arrive in 5–7 business days. You'll get a tracking number by email.",
+    "step3_title": "About Packs",
+    "step3_body": "Pokémon packs are randomized — think of them like surprise bags. Most packs won't contain rare cards, and that's normal. The fun is in the surprise.",
+    "step4_title": "Returns",
+    "step4_body": "Sealed products can be returned within 30 days. Once packs are opened, we can't accept returns (because the contents are random). Supplies like binders and sleeves can be returned unused.",
+    "step5_title": "Payment & Taxes",
+    "step5_body": "We accept all major cards and PayPal. Tax is calculated at checkout based on your location. No hidden fees.",
+    "finish": "Got it — proceed to checkout"
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "menu_toggle": "Toggle menu",
+    "cart_count": "{{ count }} items in cart"
+  }
+}
